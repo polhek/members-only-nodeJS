@@ -1,0 +1,29 @@
+<div class="p-3">
+  <h1 class="text-white text-3xl mx-3">Members-only</h1>
+</div>
+<nav class="flex p-3 justify-center items-center">
+  <% if (user) {%>
+    <h1 class="text-white text-mono font-bold mx-3">Signed in as: <%= user.username  %></h1>
+    <a href="/log-out"><button
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Log out!
+    </button></a>
+  <% } else { %>
+    <a href="/sign-up" class="mx-3">
+      <button
+       class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Sign up!
+    </button>
+  </a>
+  <a href="/log-in" class="mx-3">
+    <button
+      class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Log in!
+    </button>
+  </a>
+  <%}%>
+
+</nav>

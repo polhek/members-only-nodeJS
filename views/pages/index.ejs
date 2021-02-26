@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="bg-gray-200">
+    <header
+      class="w-screen bg-blue-700 flex justify-between font-mono items-center"
+    >
+      <%- include('../partials/header'); %>
+    </header>
+    <% if (user) {%>
+      <h1>WELCOME BACK <%= user.username  %></h1>
+      <a href="/log-out">LOG OUT</a>
+    <% } else { %>
+      <h1>please log in</h1>
+    <%}%>
+  </body>
+</html>

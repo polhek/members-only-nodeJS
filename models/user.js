@@ -9,6 +9,7 @@ const validateEmail = function (email) {
 const UserSchema = new Schema({
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
+  username: { type: String, required: true },
   email: {
     type: String,
     lowercase: true,
@@ -20,6 +21,7 @@ const UserSchema = new Schema({
       'Please fill a valid email address',
     ],
   },
+  password: { type: String, required: true },
   membershipStatus: { type: Boolean, default: false },
 });
 
