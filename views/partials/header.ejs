@@ -3,12 +3,21 @@
 </div>
 <nav class="flex p-3 justify-center items-center">
   <% if (user) {%>
-    <h1 class="text-white text-mono font-bold mx-3">Signed in as: <%= user.username  %></h1>
-    <a href="/log-out"><button
+    <h1 class="text-white text-mono font-bold mx-3">Signed in as: <%= currentUser.username  %></h1>
+    <a href="/log-out" class="mx-3"><button
       class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
     >
       Log out!
     </button></a>
+    <% if (user.membershipStatus === false) {%>
+    <a href="/member-join" class="mx-3"><button
+      class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Become a member!
+    </button></a>
+    <% } else { %>
+      <p class="text-red-500 text-xl font-bold">You are a member!</p>
+      <% } %>
   <% } else { %>
     <a href="/sign-up" class="mx-3">
       <button

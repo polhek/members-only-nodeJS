@@ -50,7 +50,6 @@ exports.signupForm_post = [
     if (!errors.isEmpty()) {
       res.render('pages/sign-up-form', {
         title: 'Sign up ',
-        user: false,
         errors: errors.array(),
       });
       return;

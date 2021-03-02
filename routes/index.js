@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const signupController = require('../controllers/signupController');
 const loginController = require('../controllers/loginController');
+const memberController = require('../controllers/memberController');
 const passport = require('passport');
 
 /* GET home page. */
@@ -27,5 +28,9 @@ router.get('/log-out', (req, res) => {
   req.logout();
   res.redirect('/');
 });
+
+router.get('/member-join', memberController.member_only_GET);
+
+router.post('/member-join', memberController.member_only_POST);
 
 module.exports = router;
