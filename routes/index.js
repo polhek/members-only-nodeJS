@@ -3,6 +3,7 @@ var router = express.Router();
 const signupController = require('../controllers/signupController');
 const loginController = require('../controllers/loginController');
 const memberController = require('../controllers/memberController');
+const messagesController = require('../controllers/messageController');
 const passport = require('passport');
 
 /* GET home page. */
@@ -21,6 +22,7 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/',
+    failureFlash: true,
   })
 );
 
@@ -32,5 +34,9 @@ router.get('/log-out', (req, res) => {
 router.get('/member-join', memberController.member_only_GET);
 
 router.post('/member-join', memberController.member_only_POST);
+
+router.get('/new-message', messagesController.new_message_GET);
+
+router.post('/new-message', messagesController.new_message_POST);
 
 module.exports = router;

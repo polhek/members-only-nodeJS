@@ -11,10 +11,3 @@ exports.loginForm_get = (req, res) => {
     errors: false,
   });
 };
-
-exports.loginForm_post = () => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/',
-  });
-};
