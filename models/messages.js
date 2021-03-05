@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 const MessagesSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
@@ -9,6 +10,10 @@ const MessagesSchema = new Schema({
 
 MessagesSchema.virtual('url').get(() => {
   return '/message/' + _id;
+});
+
+MessagesSchema.virtual('time').get(function () {
+  return this.timestamp.toUTCString();
 });
 
 module.exports = mongoose.model('Message', MessagesSchema);

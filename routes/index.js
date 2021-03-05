@@ -7,9 +7,7 @@ const messagesController = require('../controllers/messageController');
 const passport = require('passport');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('pages/index', { title: 'Members only', user: req.user });
-});
+router.get('/', messagesController.getAllMessages);
 
 router.get('/sign-up', signupController.signupForm_get);
 
@@ -22,7 +20,6 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/',
-    failureFlash: true,
   })
 );
 

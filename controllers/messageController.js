@@ -44,3 +44,19 @@ exports.new_message_POST = [
     }
   },
 ];
+
+exports.getAllMessages = (req, res, next) => {
+  Message.find({})
+    .populate('author')
+    .exec((err, messages) => {
+      if (err) {
+        return next(err);
+      } else {
+        res.render('pages/index', {
+          title: 'Members only',
+          user: req.user,
+          messagesList: messages,
+        });
+      }
+    });
+};
