@@ -52,11 +52,19 @@ exports.getAllMessages = (req, res, next) => {
       if (err) {
         return next(err);
       } else {
-        res.render('pages/index', {
-          title: 'Members only',
-          user: req.user,
-          messagesList: messages,
-        });
+        if (req.user) {
+          res.render('pages/index', {
+            title: 'Members only',
+            user: req.user,
+            messagesList: messages,
+          });
+        } else {
+          res.render('pages/index', {
+            title: 'Members only',
+            user: false,
+            messagesList: messages,
+          });
+        }
       }
     });
 };
