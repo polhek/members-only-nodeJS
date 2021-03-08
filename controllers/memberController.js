@@ -1,8 +1,4 @@
-const { body, validationResult } = require('express-validator');
 const User = require('../models/user');
-const async = require('async');
-var bcrypt = require('bcryptjs');
-const passport = require('passport');
 const dotenv = require('dotenv').config();
 
 const secretPassword = process.env.SECRET_PASSWORD;

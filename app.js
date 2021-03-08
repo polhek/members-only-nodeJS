@@ -17,6 +17,7 @@ const User = require('./models/user');
 // MongoDB connection setup...
 const mongoDB_url = process.env.MONGO_DB_URL;
 const mongoDb = process.env.MONGODB_URI || mongoDB_url;
+
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));

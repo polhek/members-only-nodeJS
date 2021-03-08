@@ -18,7 +18,11 @@
              <% if (user.membershipStatus === true) { %>
                 <h3 class="font-bold">Message by: <span class="font-normal"><%= messagesList[i].author.username %></span></h3>
                 <h3 class="font-bold">Time: <span class="font-normal"><%= messagesList[i].time %></span></h3>
-             <% } } else { %>
+             <% } else { %>
+              <h3 class="text-black">Message by: anonymous </h3>
+              <h3>Time: hidden </h3>
+             <% } %>
+           <% } else { %>
               <h3 class="text-black">Message by: anonymous </h3>
               <h3>Time: hidden </h3>
              <% } %>
@@ -26,18 +30,24 @@
           <div class="mt-5">
             <p><%= messagesList[i].text %></p>
           </div>
+          <% if (user.admin == true) {%>
+            <form method="POST" action="/delete">
+              <input type="hidden" name="id" required="true" value="<%= messagesList[i]._id %>"  >
+              <div class="flex justify-end align-center">
+                <button type="submit" class="bg-red-500 p-2 rounded-full hover:bg-red-700 "><span class="iconify" data-icon="bi:trash-fill" data-inline="false"></span></button>
+              </div>
+            </form>
+           <% } %>
         </div>
       <% } %>
-      <div>
-        <h1></h1>
-      </div>
+
     </main>
-    <% if (currentUser) {%>
-      <h1>WELCOME BACK <%= currentUser.username  %></h1>
-      <a href="/log-out">LOG OUT</a>
-    <% } else { %>
-      <h1>please log in</h1>
-    <%}%>
+    <% if (currentUser) { %>
+        <footer class="bg-blue-400 border-t-3 flex justify-center items-center absolute bottom-0 w-full h-16">
+          <a href="/admin" class="text-white text-xl hover:text-blue-900">Become admin - click here!</a>
+        </footer>
+       <% } %>
+
 
   </body>
 </html>

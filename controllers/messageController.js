@@ -1,11 +1,8 @@
 const { body, validationResult } = require('express-validator');
-const User = require('../models/user');
-const Message = require('../models/messages');
-const async = require('async');
-var bcrypt = require('bcryptjs');
-const passport = require('passport');
 
-exports.new_message_GET = (req, res, next) => {
+const Message = require('../models/messages');
+
+exports.new_message_GET = (req, res) => {
   res.render('pages/new-message', {
     title: 'New message',
     user: req.user,
@@ -67,4 +64,16 @@ exports.getAllMessages = (req, res, next) => {
         }
       }
     });
+};
+
+exports.deleteMessage_POST = (req, res, next) => {
+  Message.findByIdAndRemove(
+    req.body.id,
+    (deleteMessage = (err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect('/');
+    })
+  );
 };
