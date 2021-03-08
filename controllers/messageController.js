@@ -1,5 +1,4 @@
 const { body, validationResult } = require('express-validator');
-
 const Message = require('../models/messages');
 
 exports.new_message_GET = (req, res) => {
